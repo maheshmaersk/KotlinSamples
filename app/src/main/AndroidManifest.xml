@@ -18,10 +18,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KotlinSamples">
         <activity
+            android:name=".SampleActivity"
+            android:exported="false" />
+        <activity
             android:name=".OnBoardingActivity"
             android:exported="true"
-            android:theme="@style/Theme.KotlinSamples.NoActionBar">
-        </activity>
+            android:theme="@style/Theme.KotlinSamples.NoActionBar"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">
