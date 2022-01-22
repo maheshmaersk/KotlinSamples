@@ -5,17 +5,23 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.widget.AppCompatButton
+import com.amvlabs.kotlinsamples.databinding.ActivityLifeBinding
+import com.amvlabs.kotlinsamples.databinding.ActivityLifeCycleBinding
+import com.amvlabs.kotlinsamples.databinding.ActivityOnBoardingBinding
 
 class LifeCycleActivity : AppCompatActivity() {
     val TAG = LifeCycleActivity::class.java.simpleName
+    private lateinit var binding: ActivityLifeCycleBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_life_cycle)
 
-        val losfs = findViewById<AppCompatButton>(R.id.logsds)
+        binding = ActivityLifeCycleBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        losfs.setOnClickListener {
+
+        binding.logsds.setOnClickListener {
             startActivity(Intent(it.context,LifeActivity::class.java))
         }
         Log.e(TAG, "onCreate")

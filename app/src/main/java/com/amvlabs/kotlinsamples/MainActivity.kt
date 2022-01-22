@@ -10,21 +10,26 @@ import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.Group
+import com.amvlabs.kotlinsamples.databinding.ActivityLifeBinding
+import com.amvlabs.kotlinsamples.databinding.ActivityMainBinding
+import com.amvlabs.kotlinsamples.databinding.ActivityOnBoardingBinding
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
 class MainActivity : AppCompatActivity() {
     lateinit var mContext: Context
     val TAG = MainActivity::class.java.simpleName
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        var loginGroup: Group = findViewById(R.id.loginGroup)
-        var singUpGroup = findViewById<Group>(R.id.signUpGroup)
+//        var loginGroup: Group = findViewById(R.id.loginGroup)
+//        var singUpGroup = findViewById<Group>(R.id.signUpGroup)
 
-        var registerBt = findViewById<AppCompatButton>(R.id.registerBT)
+//        var registerBt = findViewById<AppCompatButton>(R.id.registerBT)
         var loginBt = findViewById<AppCompatButton>(R.id.btLogin)
         var etUserName = findViewById<TextInputEditText>(R.id.etUserName)
         var etPassword = findViewById<TextInputEditText>(R.id.etPassword)
@@ -32,15 +37,15 @@ class MainActivity : AppCompatActivity() {
         var tilUsername = findViewById<TextInputLayout>(R.id.tilUsername)
         mContext = mainLayout.context
 
-        registerBt.setOnClickListener {
-            if (registerBt.text.toString().equals("Register", true)) {
-                registerBt.text = "Login"
-                singUpGroup.visibility = View.VISIBLE
-                loginGroup.visibility = View.GONE
+       binding.registerBT.setOnClickListener {
+            if (binding.registerBT.text.toString().equals("Register", true)) {
+                binding.registerBT.text = "Login"
+                binding.signUpGroup.visibility = View.VISIBLE
+                binding.loginGroup.visibility = View.GONE
             } else {
-                registerBt.text = "Register"
-                singUpGroup.visibility = View.GONE
-                loginGroup.visibility = View.VISIBLE
+                binding.registerBT.text = "Register"
+                binding.signUpGroup.visibility = View.GONE
+                binding.loginGroup.visibility = View.VISIBLE
             }
         }
 

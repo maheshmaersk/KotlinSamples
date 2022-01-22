@@ -5,13 +5,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.widget.AppCompatButton
+import com.amvlabs.kotlinsamples.databinding.ActivityLifeBinding
+import com.amvlabs.kotlinsamples.databinding.ActivityOnBoardingBinding
 
 class LifeActivity : AppCompatActivity() {
 
     val TAG = LifeActivity::class.java.simpleName
-
+    private lateinit var binding: ActivityLifeBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
         setContentView(R.layout.activity_life)
         Log.e(TAG, "onCreate")
     }
