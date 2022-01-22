@@ -14,13 +14,23 @@ class LifeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLifeBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityLifeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
 
-        setContentView(R.layout.activity_life)
+        var acbar = supportActionBar
+        acbar?.setDisplayHomeAsUpEnabled(true)
+
         Log.e(TAG, "onCreate")
     }
 
 
+    override fun onSupportNavigateUp(): Boolean {
+        Log.e(TAG, "Back Clicked")
+
+        onBackPressed()
+        return super.onSupportNavigateUp()
+    }
     override fun onPause() {
         super.onPause()
         Log.e(TAG, "onPause")
@@ -49,6 +59,10 @@ class LifeActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         Log.e(TAG, "onStart")
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 
 }
