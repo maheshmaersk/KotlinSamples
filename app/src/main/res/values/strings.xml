@@ -18,4 +18,16 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+
+
+    <string-array name="countries_list">
+        <item>India</item>
+        <item>Aus</item>
+        <item>Pak</item>
+        <item>Wi</item>
+        <item>Sa</item>
+        <item>Sl</item>
+        <item>Nz</item>
+        <item>Eng</item>
+    </string-array>
 </resources>

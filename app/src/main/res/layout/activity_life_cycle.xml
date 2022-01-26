@@ -11,11 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/purple_700"
+        android:layout_marginTop="10dp"
         android:text="Next Screen"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/states" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/alertDialogbt"
@@ -76,5 +76,27 @@
         app:layout_constraintEnd_toEndOf="@+id/musicVolume"
         app:layout_constraintStart_toStartOf="@+id/musicVolume"
         app:layout_constraintTop_toBottomOf="@+id/musicVolume" />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/countries"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:entries="@array/countries_list"
+        app:layout_constraintEnd_toEndOf="@+id/musicVolume"
+        app:layout_constraintStart_toStartOf="@+id/musicVolume"
+        app:layout_constraintTop_toBottomOf="@+id/seekValue" />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/states"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/musicVolume"
+        app:layout_constraintStart_toStartOf="@+id/musicVolume"
+        app:layout_constraintTop_toBottomOf="@+id/countries" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

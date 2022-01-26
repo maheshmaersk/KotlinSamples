@@ -1,5 +1,6 @@
 package com.amvlabs.kotlinsamples
 
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -11,26 +12,30 @@ import com.amvlabs.kotlinsamples.databinding.ActivityLifeBinding
 import com.amvlabs.kotlinsamples.databinding.ActivityLifeCycleBinding
 import com.amvlabs.kotlinsamples.databinding.ActivityOnBoardingBinding
 import android.os.Looper
-import android.widget.RatingBar
-import android.widget.SeekBar
 
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
+import android.media.AudioManager
+import android.view.View
+import android.widget.*
+import android.widget.SeekBar.OnSeekBarChangeListener
 
 
 class LifeCycleActivity : AppCompatActivity() {
     val TAG = LifeCycleActivity::class.java.simpleName
     private lateinit var binding: ActivityLifeCycleBinding
     private var seekProgress: Int = 0
-
+    var mAudio: AudioManager? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityLifeCycleBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        mAudio = getSystemService(Context.AUDIO_SERVICE) as AudioManager?
+        initControls(binding.musicVolume, AudioManager.STREAM_MUSIC);
         binding.logsds.setOnClickListener {
             startActivity(Intent(it.context, LifeActivity::class.java))
         }
@@ -71,57 +76,83 @@ class LifeCycleActivity : AppCompatActivity() {
             }.show()
         }
 
-        binding.musicVolume.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
-            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                seekProgress=progress
-                Log.e(TAG,"onProgress $progress")
-            }
-
-            override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                Log.e(TAG,"onStartTrackingTouch")
-            }
-
-            override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                Log.e(TAG,"onStopTrackingTouch")
-            }
-        })
+//        binding.musicVolume.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+//            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+//                seekProgress=progress
+//                Log.e(TAG,"onProgress $progress")
+//            }
+//
+//            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+//                Log.e(TAG,"onStartTrackingTouch")
+//            }
+//
+//            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+//                Log.e(TAG,"onStopTrackingTouch")
+//            }
+//        })
 
         binding.seekValue.setOnClickListener {
-            Toast.makeText(it?.context, "Seek is $seekProgress", Toast.LENGTH_SHORT)
+            Toast.makeText(it?.context, "Seek is ${binding.musicVolume.progress}", Toast.LENGTH_SHORT)
                 .show()
+        }
+
+        val stateList = arrayOf("KA","TN","AP","TS","PN","MU")
+
+        val adapter = ArrayAdapter(this,
+            android.R.layout.simple_spinner_dropdown_item, stateList)
+        binding.states.adapter = adapter
+
+        binding.countries.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>,
+                                        view: View, position: Int, id: Long) {
+                val capital: String = when(position){
+                     0 -> "Delhi"
+                     1 -> "Sydney"
+                     2 -> "trsdf"
+                     3 -> "jhgjhgj"
+                     4 -> "Sydnehdfsdfsdfy"
+                     5 -> "sdfd"
+                     6 -> "Morning"
+                    else -> "dummy"
+                }
+                Snackbar.make(view,"Capital is $capital",Snackbar.LENGTH_SHORT).show()
+
+                Toast.makeText(binding.countries.context, "${binding.countries.selectedItem}  ${binding.countries.selectedItemId} $position $id", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // write code to perform some action
+            }
+        }
+
+        binding.states.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>,
+                                        view: View, position: Int, id: Long) {
+                Toast.makeText(binding.countries.context, "${binding.states.selectedItem}  ${binding.states.selectedItemId} $position $id", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // write code to perform some action
+            }
         }
 
         Log.e(TAG, "onCreate")
     }
 
-    override fun onPause() {
-        super.onPause()
-        Log.e(TAG, "onPause")
-    }
+    /*INFO : Followed from https://studyviewer.com/android-control-volume-programmatically/
+    * Handling of Music Volumes based on Streams*/
 
-    override fun onResume() {
-        super.onResume()
-        Log.e(TAG, "onResume")
-    }
+    private fun initControls(seek: SeekBar, stream: Int) {
+        seek.max = mAudio!!.getStreamMaxVolume(stream)
+        seek.progress = mAudio!!.getStreamVolume(stream)
+        seek.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
+            override fun onProgressChanged(bar: SeekBar, progress: Int, fromUser: Boolean) {
+                mAudio!!.setStreamVolume(stream, progress, AudioManager.FLAG_PLAY_SOUND)
+            }
 
-    override fun onRestart() {
-        super.onRestart()
-        Log.e(TAG, "onRestart")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.e(TAG, "onStop")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.e(TAG, "onDestroy")
-    }
-
-    override fun onStart() {
-        super.onStart()
-        Log.e(TAG, "onStart")
+            override fun onStartTrackingTouch(bar: SeekBar) {}
+            override fun onStopTrackingTouch(bar: SeekBar) {}
+        })
     }
 
     private var doubleBackToExitPressedOnce = false
