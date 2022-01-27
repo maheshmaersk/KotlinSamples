@@ -104,7 +104,7 @@ class LifeCycleActivity : AppCompatActivity() {
 
         binding.countries.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>,
-                                        view: View, position: Int, id: Long) {
+                                        view: View?, position: Int, id: Long) {
                 val capital: String = when(position){
                      0 -> "Delhi"
                      1 -> "Sydney"
@@ -115,7 +115,10 @@ class LifeCycleActivity : AppCompatActivity() {
                      6 -> "Morning"
                     else -> "dummy"
                 }
-                Snackbar.make(view,"Capital is $capital",Snackbar.LENGTH_SHORT).show()
+                view?.let {
+                    Snackbar.make(it,"Capital is $capital",Snackbar.LENGTH_SHORT).show()
+                }
+
 
                 Toast.makeText(binding.countries.context, "${binding.countries.selectedItem}  ${binding.countries.selectedItemId} $position $id", Toast.LENGTH_SHORT).show()
             }
@@ -127,7 +130,7 @@ class LifeCycleActivity : AppCompatActivity() {
 
         binding.states.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>,
-                                        view: View, position: Int, id: Long) {
+                                        view: View?, position: Int, id: Long) {
                 Toast.makeText(binding.countries.context, "${binding.states.selectedItem}  ${binding.states.selectedItemId} $position $id", Toast.LENGTH_SHORT).show()
             }
 
