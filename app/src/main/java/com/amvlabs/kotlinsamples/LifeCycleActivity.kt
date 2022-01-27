@@ -1,7 +1,7 @@
 package com.amvlabs.kotlinsamples
 
+import android.R
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,16 +13,17 @@ import com.amvlabs.kotlinsamples.databinding.ActivityLifeCycleBinding
 import com.amvlabs.kotlinsamples.databinding.ActivityOnBoardingBinding
 import android.os.Looper
 
-import androidx.appcompat.app.AlertDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import android.media.AudioManager
 import android.view.View
 import android.widget.*
 import android.widget.SeekBar.OnSeekBarChangeListener
-
+import android.content.DialogInterface
+import androidx.appcompat.app.AlertDialog
 
 class LifeCycleActivity : AppCompatActivity() {
+
     val TAG = LifeCycleActivity::class.java.simpleName
     private lateinit var binding: ActivityLifeCycleBinding
     private var seekProgress: Int = 0
@@ -71,9 +72,10 @@ class LifeCycleActivity : AppCompatActivity() {
         }
 
         binding.selectedRatingTv.setOnClickListener {
-            Snackbar.make(it,"Rating is ${binding.ratingApp.rating}",Snackbar.LENGTH_SHORT).setAction("undo") { v12 ->
-                Log.e(TAG, "Redo")
-            }.show()
+            Snackbar.make(it, "Rating is ${binding.ratingApp.rating}", Snackbar.LENGTH_SHORT)
+                .setAction("undo") { v12 ->
+                    Log.e(TAG, "Redo")
+                }.show()
         }
 
 //        binding.musicVolume.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
@@ -92,32 +94,48 @@ class LifeCycleActivity : AppCompatActivity() {
 //        })
 
         binding.seekValue.setOnClickListener {
-            Toast.makeText(it?.context, "Seek is ${binding.musicVolume.progress}", Toast.LENGTH_SHORT)
+            Toast.makeText(
+                it?.context,
+                "Seek is ${binding.musicVolume.progress}",
+                Toast.LENGTH_SHORT
+            )
                 .show()
         }
 
-        val stateList = arrayOf("KA","TN","AP","TS","PN","MU")
+        val stateList = arrayOf("KA", "TN", "AP", "TS", "PN", "MU")
 
-        val adapter = ArrayAdapter(this,
-            android.R.layout.simple_spinner_dropdown_item, stateList)
+        val adapter = ArrayAdapter(
+            this,
+            R.layout.simple_spinner_dropdown_item, stateList
+        )
         binding.states.adapter = adapter
 
         binding.countries.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>,
-                                        view: View, position: Int, id: Long) {
-                val capital: String = when(position){
-                     0 -> "Delhi"
-                     1 -> "Sydney"
-                     2 -> "trsdf"
-                     3 -> "jhgjhgj"
-                     4 -> "Sydnehdfsdfsdfy"
-                     5 -> "sdfd"
-                     6 -> "Morning"
-                    else -> "dummy"
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View?, position: Int, id: Long) {
+                val capital: ArrayList<String> = when (position) {
+                    0 -> arrayListOf<String>("s","fd","po")
+                    1 -> arrayListOf("a","b","c")
+                    2 -> arrayListOf("d","e","f")
+                    3 -> arrayListOf("g","h","i")
+                    4 -> arrayListOf("j","k","l")
+                    5 -> arrayListOf("m","n","o")
+                    6 -> arrayListOf("p","q","r")
+                    else -> arrayListOf("xx","xx","xx")
                 }
-                Snackbar.make(view,"Capital is $capital",Snackbar.LENGTH_SHORT).show()
 
-                Toast.makeText(binding.countries.context, "${binding.countries.selectedItem}  ${binding.countries.selectedItemId} $position $id", Toast.LENGTH_SHORT).show()
+                binding.states.adapter = ArrayAdapter(
+                    this@LifeCycleActivity,
+                    R.layout.simple_dropdown_item_1line,capital)
+
+                // Snackbar.make(view, "Capital is $capital", Snackbar.LENGTH_SHORT).show()
+
+                Toast.makeText(
+                    binding.countries.context,
+                    "${binding.countries.selectedItem}  ${binding.countries.selectedItemId} $position $id",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
@@ -126,9 +144,15 @@ class LifeCycleActivity : AppCompatActivity() {
         }
 
         binding.states.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>,
-                                        view: View, position: Int, id: Long) {
-                Toast.makeText(binding.countries.context, "${binding.states.selectedItem}  ${binding.states.selectedItemId} $position $id", Toast.LENGTH_SHORT).show()
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View?, position: Int, id: Long
+            ) {
+                Toast.makeText(
+                    binding.countries.context,
+                    "${binding.states.selectedItem}  ${binding.states.selectedItemId} $position $id",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
@@ -157,6 +181,30 @@ class LifeCycleActivity : AppCompatActivity() {
 
     private var doubleBackToExitPressedOnce = false
     override fun onBackPressed() {
+
+        val alertbox: android.app.AlertDialog? = android.app.AlertDialog.Builder(this)
+            .setMessage("Do you want to exit application?")
+            .setPositiveButton("Yes", DialogInterface.OnClickListener { arg0, arg1 ->
+
+                this.doubleBackToExitPressedOnce = true
+                Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show()
+                Handler(Looper.getMainLooper()).postDelayed({
+                    doubleBackToExitPressedOnce = false
+                }, 2000)
+
+                super.onBackPressed()
+
+            })
+            .setNegativeButton("No", // do something when the button is clicked
+                DialogInterface.OnClickListener { arg0, arg1 -> })
+
+            .show()
+
+
+
+
+
+
         if (doubleBackToExitPressedOnce) {
             super.onBackPressed()
             return

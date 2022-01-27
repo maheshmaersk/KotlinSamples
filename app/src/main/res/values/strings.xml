@@ -30,4 +30,19 @@
         <item>Nz</item>
         <item>Eng</item>
     </string-array>
+
+
+    <string-array name="states_list">
+        <item>India_delhi</item>
+        <item>Aus_sydney</item>
+        <item>Pak_jdksl</item>
+        <item>Wi_lkdsk</item>
+        <item>Sa_sdfsl</item>
+        <item>Sl_dlkfjls</item>
+        <item>Nz_sfl</item>
+        <item>Eng_slkjfkl</item>
+    </string-array>
+
+
+
 </resources>

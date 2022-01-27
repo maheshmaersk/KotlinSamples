@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -17,6 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/endGL"
         android:layout_width="wrap_content"
@@ -25,6 +27,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintGuide_end="20dp"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/topGl"
@@ -44,6 +47,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintGuide_end="20dp" />
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/buttonGroup"
         android:layout_width="0dp"
@@ -51,6 +55,8 @@
         app:layout_constraintBottom_toTopOf="@+id/bottomGl"
         app:layout_constraintEnd_toEndOf="@id/endGL"
         app:layout_constraintStart_toStartOf="@id/startGL">
+
+
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/forgotUsernameBT"
@@ -168,18 +174,37 @@
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilSpMbleNO"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/tilSpUsername"
+        app:layout_constraintStart_toStartOf="@+id/tilSpUsername"
+        app:layout_constraintTop_toBottomOf="@+id/tilSpEmail">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:id="@+id/spMbleNO"
+            android:layout_height="wrap_content"
+            android:hint="Enter your Number"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
     <androidx.constraintlayout.widget.Group
         android:id="@+id/loginGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:constraint_referenced_ids="tilUsername,tilPassword,btLogin"/>
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/signUpGroup"
         android:layout_width="wrap_content"
-        android:visibility="gone"
+        android:visibility="visible"
         android:layout_height="wrap_content"
         app:constraint_referenced_ids="tilSpUsername,tilSpEmail"/>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

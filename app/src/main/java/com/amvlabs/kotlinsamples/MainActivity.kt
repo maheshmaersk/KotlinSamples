@@ -28,14 +28,17 @@ class MainActivity : AppCompatActivity() {
 
 //        var loginGroup: Group = findViewById(R.id.loginGroup)
 //        var singUpGroup = findViewById<Group>(R.id.signUpGroup)
-
 //        var registerBt = findViewById<AppCompatButton>(R.id.registerBT)
+
         var loginBt = findViewById<AppCompatButton>(R.id.btLogin)
         var etUserName = findViewById<TextInputEditText>(R.id.etUserName)
         var etPassword = findViewById<TextInputEditText>(R.id.etPassword)
         var mainLayout = findViewById<ConstraintLayout>(R.id.topLayout)
         var tilUsername = findViewById<TextInputLayout>(R.id.tilUsername)
+
+
         mContext = mainLayout.context
+        
 
        binding.registerBT.setOnClickListener {
             if (binding.registerBT.text.toString().equals("Register", true)) {
