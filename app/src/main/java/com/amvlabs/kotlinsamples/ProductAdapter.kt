@@ -1,14 +1,14 @@
 package com.amvlabs.kotlinsamples
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import androidx.appcompat.widget.AppCompatTextView
-import androidx.core.content.res.ResourcesCompat
 
+
+/*INFO :  Use reference from : https://www.raywenderlich.com/155-android-listview-tutorial-with-kotlin*/
 class ProductAdapter(private val context: Context, private val productList: ArrayList<Product>) :
     BaseAdapter() {
 
@@ -27,21 +27,43 @@ class ProductAdapter(private val context: Context, private val productList: Arra
         return position.toLong()
     }
 
-    @SuppressLint("ViewHolder")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val productView = inflater.inflate(R.layout.list_item_product, parent, false)
 
-        val title= productView.findViewById<AppCompatTextView>(R.id.productTitle)
-        val desc= productView.findViewById<AppCompatTextView>(R.id.productDescription)
-        val price= productView.findViewById<AppCompatTextView>(R.id.productPrice)
+        val productDetail = getItem(position) as Product
+        val view:View
+        val holder:ViewHolder
 
-        val productDetail= getItem(position) as Product
+        if(convertView == null){
+            view= inflater.inflate(R.layout.list_item_product, parent, false)
+            holder = ViewHolder()
 
-        title.text = productDetail.name
-        desc.text = productDetail.shortDescription
-        price.text = productDetail.salePrice
+            holder.title = view.findViewById<AppCompatTextView>(R.id.productTitle)
+            holder.desc = view.findViewById<AppCompatTextView>(R.id.productDescription)
+            holder.price = view.findViewById<AppCompatTextView>(R.id.productPrice)
 
-        return productView
+            view.tag = holder
+        }else{
+            view = convertView
+            holder = convertView.tag as ViewHolder
+        }
+
+        val titleTextView = holder.title
+        val subtitleTextView = holder.desc
+        val detailTextView = holder.price
+
+        titleTextView.text = productDetail.name
+        subtitleTextView.text = productDetail.shortDescription
+        detailTextView.text = productDetail.salePrice
+
+        return view
     }
+
+
+    private class ViewHolder {
+        lateinit var title: AppCompatTextView
+        lateinit var desc: AppCompatTextView
+        lateinit var price: AppCompatTextView
+    }
+
 
 }
