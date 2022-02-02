@@ -10,9 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.Group
-import com.amvlabs.kotlinsamples.databinding.ActivityLifeBinding
-import com.amvlabs.kotlinsamples.databinding.ActivityMainBinding
-import com.amvlabs.kotlinsamples.databinding.ActivityOnBoardingBinding
+import com.amvlabs.kotlinsamples.databinding.*
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
@@ -20,10 +18,13 @@ class MainActivity : AppCompatActivity() {
     lateinit var mContext: Context
     val TAG = MainActivity::class.java.simpleName
     private lateinit var binding: ActivityMainBinding
+    private lateinit var binding1: ActivityLifeCycleBinding
+    private lateinit var binding2: CustomSpinnerBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        binding1 = ActivityLifeCycleBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
 //        var loginGroup: Group = findViewById(R.id.loginGroup)

@@ -3,23 +3,21 @@ package com.amvlabs.kotlinsamples
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.media.AudioManager
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
-import androidx.appcompat.widget.AppCompatButton
-import com.amvlabs.kotlinsamples.databinding.ActivityLifeBinding
-import com.amvlabs.kotlinsamples.databinding.ActivityLifeCycleBinding
-import com.amvlabs.kotlinsamples.databinding.ActivityOnBoardingBinding
 import android.os.Looper
-
-import androidx.appcompat.app.AlertDialog
+import android.util.Log
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.SeekBar
+import android.widget.SeekBar.OnSeekBarChangeListener
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.amvlabs.kotlinsamples.databinding.ActivityLifeCycleBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
-import android.media.AudioManager
-import android.view.View
-import android.widget.*
-import android.widget.SeekBar.OnSeekBarChangeListener
 
 
 class LifeCycleActivity : AppCompatActivity() {
