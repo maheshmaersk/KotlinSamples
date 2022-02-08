@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
@@ -50,6 +51,43 @@ class LifeActivity : AppCompatActivity() {
 
         binding.contactList.onItemClickListener =
             AdapterView.OnItemClickListener { parent, view, position, id -> Toast.makeText(binding.contactList.context, "${binding.contactList.getItemAtPosition(position)}", Toast.LENGTH_SHORT).show() }
+
+
+
+        val animationFadeIn = AnimationUtils.loadAnimation(this, com.amvlabs.kotlinsamples.R.anim.fade_in)
+        val animationFadeOut = AnimationUtils.loadAnimation(this, com.amvlabs.kotlinsamples.R.anim.fade_out)
+        val animationZoomIn = AnimationUtils.loadAnimation(this, com.amvlabs.kotlinsamples.R.anim.zoom_in)
+        val animationZoomOut = AnimationUtils.loadAnimation(this, com.amvlabs.kotlinsamples.R.anim.zoom_out)
+        val animationSlideIn = AnimationUtils.loadAnimation(this, com.amvlabs.kotlinsamples.R.anim.slide_up)
+        val animationSlideOut = AnimationUtils.loadAnimation(this, com.amvlabs.kotlinsamples.R.anim.slide_down)
+        val animationRotate = AnimationUtils.loadAnimation(this, com.amvlabs.kotlinsamples.R.anim.rotate)
+        val animationBounce = AnimationUtils.loadAnimation(this, com.amvlabs.kotlinsamples.R.anim.bounce)
+
+
+        binding.bounce.setOnClickListener {
+            binding.moviePoster.startAnimation(animationBounce)
+        }
+        binding.rotate.setOnClickListener {
+            binding.moviePoster.startAnimation(animationRotate)
+        }
+        binding.slideIn.setOnClickListener {
+            binding.moviePoster.startAnimation(animationSlideIn)
+        }
+        binding.slideOut.setOnClickListener {
+            binding.moviePoster.startAnimation(animationSlideOut)
+        }
+        binding.zoomIn.setOnClickListener {
+            binding.moviePoster.startAnimation(animationZoomIn)
+        }
+        binding.zoomOut.setOnClickListener {
+            binding.moviePoster.startAnimation(animationZoomOut)
+        }
+        binding.fadeIn.setOnClickListener {
+            binding.moviePoster.startAnimation(animationFadeIn)
+        }
+        binding.fadeOut.setOnClickListener {
+            binding.moviePoster.startAnimation(animationFadeOut)
+        }
     }
 
 

@@ -37,7 +37,6 @@ class LifeCycleActivity : AppCompatActivity() {
         binding.logsds.setOnClickListener {
             startActivity(Intent(it.context, LifeActivity::class.java))
         }
-
         binding.alertDialogbt.setOnClickListener { v ->
             var slert = MaterialAlertDialogBuilder(v.context)
             slert.setTitle("Exit Message")
@@ -100,39 +99,39 @@ class LifeCycleActivity : AppCompatActivity() {
             android.R.layout.simple_spinner_dropdown_item, stateList)
         binding.states.adapter = adapter
 
-        binding.countries.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>,
-                                        view: View, position: Int, id: Long) {
-                val capital: String = when(position){
-                     0 -> "Delhi"
-                     1 -> "Sydney"
-                     2 -> "trsdf"
-                     3 -> "jhgjhgj"
-                     4 -> "Sydnehdfsdfsdfy"
-                     5 -> "sdfd"
-                     6 -> "Morning"
-                    else -> "dummy"
-                }
-                Snackbar.make(view,"Capital is $capital",Snackbar.LENGTH_SHORT).show()
+//        binding.countries.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+//            override fun onItemSelected(parent: AdapterView<*>,
+//                                        view: View, position: Int, id: Long) {
+//                val capital: String = when(position){
+//                     0 -> "Delhi"
+//                     1 -> "Sydney"
+//                     2 -> "trsdf"
+//                     3 -> "jhgjhgj"
+//                     4 -> "Sydnehdfsdfsdfy"
+//                     5 -> "sdfd"
+//                     6 -> "Morning"
+//                    else -> "dummy"
+//                }
+//                Snackbar.make(view,"Capital is $capital",Snackbar.LENGTH_SHORT).show()
+//
+//                Toast.makeText(binding.countries.context, "${binding.countries.selectedItem}  ${binding.countries.selectedItemId} $position $id", Toast.LENGTH_SHORT).show()
+//            }
+//
+//            override fun onNothingSelected(parent: AdapterView<*>) {
+//                // write code to perform some action
+//            }
+//        }
 
-                Toast.makeText(binding.countries.context, "${binding.countries.selectedItem}  ${binding.countries.selectedItemId} $position $id", Toast.LENGTH_SHORT).show()
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>) {
-                // write code to perform some action
-            }
-        }
-
-        binding.states.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>,
-                                        view: View, position: Int, id: Long) {
-                Toast.makeText(binding.countries.context, "${binding.states.selectedItem}  ${binding.states.selectedItemId} $position $id", Toast.LENGTH_SHORT).show()
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>) {
-                // write code to perform some action
-            }
-        }
+//        binding.states.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+//            override fun onItemSelected(parent: AdapterView<*>,
+//                                        view: View, position: Int, id: Long) {
+//                Toast.makeText(binding.countries.context, "${binding.states.selectedItem}  ${binding.states.selectedItemId} $position $id", Toast.LENGTH_SHORT).show()
+//            }
+//
+//            override fun onNothingSelected(parent: AdapterView<*>) {
+//                // write code to perform some action
+//            }
+//        }
 
         Log.e(TAG, "onCreate")
     }

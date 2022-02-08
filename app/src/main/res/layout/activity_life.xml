@@ -7,11 +7,137 @@
     tools:context=".LifeActivity">
 
     <ListView
+        android:id="@+id/contactList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/contactList"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/bounce"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:background="@color/purple_700"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Bounce"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/fadeIn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/fadeIn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:background="@color/purple_700"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Fade In"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/fadeOut"
+        app:layout_constraintStart_toEndOf="@+id/bounce"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/fadeOut"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:background="@color/purple_700"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Fade out"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/rotate"
+        app:layout_constraintStart_toEndOf="@+id/fadeIn"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/rotate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/purple_700"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Rotate"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/fadeOut"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/slideIn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:background="@color/purple_700"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Slide In"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/slideOut"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bounce" />
+
+    <TextView
+        android:id="@+id/slideOut"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:background="@color/purple_700"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Slide Out"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/zoomIn"
+        app:layout_constraintStart_toEndOf="@+id/slideIn"
+        app:layout_constraintTop_toTopOf="@+id/slideIn" />
+
+    <TextView
+        android:id="@+id/zoomIn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:background="@color/purple_700"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Zoom In"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/zoomOut"
+        app:layout_constraintStart_toEndOf="@+id/slideOut"
+        app:layout_constraintTop_toTopOf="@+id/slideIn" />
+
+    <TextView
+        android:id="@+id/zoomOut"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/purple_700"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Zoom Out"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/zoomIn"
+        app:layout_constraintTop_toTopOf="@+id/slideIn" />
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:src="@drawable/vijay"
+        android:id="@+id/moviePoster"
+        android:src="@drawable/rrr"
+        android:scaleType="fitXY"
+        app:layout_constraintTop_toBottomOf="@+id/slideIn"
+        android:layout_marginTop="10dp"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
