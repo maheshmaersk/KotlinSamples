@@ -8,6 +8,8 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -25,12 +27,16 @@ class LifeCycleActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLifeCycleBinding
     private var seekProgress: Int = 0
     var mAudio: AudioManager? = null
+    lateinit var mContext: Context
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityLifeCycleBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+        mContext= binding.root.context
 
         mAudio = getSystemService(Context.AUDIO_SERVICE) as AudioManager?
         initControls(binding.musicVolume, AudioManager.STREAM_MUSIC);
@@ -68,9 +74,10 @@ class LifeCycleActivity : AppCompatActivity() {
         }
 
         binding.selectedRatingTv.setOnClickListener {
-            Snackbar.make(it,"Rating is ${binding.ratingApp.rating}",Snackbar.LENGTH_SHORT).setAction("undo") { v12 ->
-                Log.e(TAG, "Redo")
-            }.show()
+            Snackbar.make(it, "Rating is ${binding.ratingApp.rating}", Snackbar.LENGTH_SHORT)
+                .setAction("undo") { v12 ->
+                    Log.e(TAG, "Redo")
+                }.show()
         }
 
 //        binding.musicVolume.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
@@ -89,14 +96,20 @@ class LifeCycleActivity : AppCompatActivity() {
 //        })
 
         binding.seekValue.setOnClickListener {
-            Toast.makeText(it?.context, "Seek is ${binding.musicVolume.progress}", Toast.LENGTH_SHORT)
+            Toast.makeText(
+                it?.context,
+                "Seek is ${binding.musicVolume.progress}",
+                Toast.LENGTH_SHORT
+            )
                 .show()
         }
 
-        val stateList = arrayOf("KA","TN","AP","TS","PN","MU")
+        val stateList = arrayOf("KA", "TN", "AP", "TS", "PN", "MU")
 
-        val adapter = ArrayAdapter(this,
-            android.R.layout.simple_spinner_dropdown_item, stateList)
+        val adapter = ArrayAdapter(
+            this,
+            android.R.layout.simple_spinner_dropdown_item, stateList
+        )
         binding.states.adapter = adapter
 
 //        binding.countries.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -134,6 +147,29 @@ class LifeCycleActivity : AppCompatActivity() {
 //        }
 
         Log.e(TAG, "onCreate")
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_home,menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        var intent:Intent = Intent(mContext,LifeActivity::class.java)
+        when (item.itemId) {
+            R.id.menuProfile -> {
+                intent = Intent(mContext,LifeActivity::class.java)
+            }
+            R.id.menuTheme -> {
+                intent = Intent(mContext,MainActivity::class.java)
+            }
+            R.id.menuSettings -> {
+                intent = Intent(mContext,SampleActivity::class.java)
+            }
+        }
+        startActivity(intent)
+        return super.onOptionsItemSelected(item)
     }
 
     /*INFO : Followed from https://studyviewer.com/android-control-volume-programmatically/
