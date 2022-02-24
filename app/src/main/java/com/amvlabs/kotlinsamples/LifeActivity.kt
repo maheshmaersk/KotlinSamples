@@ -147,6 +147,13 @@ class LifeActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+
+        val register = menu!!.findItem(R.id.menuPayment)
+        register.isVisible = false //userRegistered is boolean, pointing if the user has registered or not.
+        return true
+    }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         var intent: Intent = Intent(mContext, LifeCycleActivity::class.java)
