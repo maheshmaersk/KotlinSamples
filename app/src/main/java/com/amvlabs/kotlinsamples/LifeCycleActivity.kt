@@ -18,6 +18,7 @@ import android.widget.SeekBar.OnSeekBarChangeListener
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.amvlabs.kotlinsamples.databinding.ActivityLifeCycleBinding
+import com.amvlabs.kotlinsamples.menus.PopMenuActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 
@@ -42,6 +43,9 @@ class LifeCycleActivity : AppCompatActivity() {
         initControls(binding.musicVolume, AudioManager.STREAM_MUSIC);
         binding.logsds.setOnClickListener {
             startActivity(Intent(it.context, LifeActivity::class.java))
+        }
+        binding.popMenu.setOnClickListener {
+            startActivity(Intent(it.context, PopMenuActivity::class.java))
         }
         binding.alertDialogbt.setOnClickListener { v ->
             var slert = MaterialAlertDialogBuilder(v.context)

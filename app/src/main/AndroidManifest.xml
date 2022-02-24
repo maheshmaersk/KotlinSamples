@@ -18,6 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KotlinSamples">
         <activity
+            android:name=".menus.PopMenuActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.login.LoginActivity"
             android:exported="false"
             android:label="@string/title_activity_login" />
