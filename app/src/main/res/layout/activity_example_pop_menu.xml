@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:padding="10dp"
     android:layout_height="match_parent"
     tools:context=".menus.PopMenuActivity">
 
@@ -12,7 +13,9 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="10dp"
-        android:text="I am TextView"
+        android:background="@color/red"
+        android:textColor="@color/white"
+        android:text="Pop Menu Example"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,4 +29,19 @@
         android:text="Examp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPopEx" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvConteEx"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Context Menu Example"
+        android:textSize="18sp"
+        android:layout_marginTop="10dp"
+        android:background="@color/green"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btPopExam" />
 </androidx.constraintlayout.widget.ConstraintLayout>
