@@ -17,8 +17,10 @@ import android.widget.SeekBar
 import android.widget.SeekBar.OnSeekBarChangeListener
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.amvlabs.kotlinsamples.databinding.ActivityExamplePickerBinding
 import com.amvlabs.kotlinsamples.databinding.ActivityLifeCycleBinding
 import com.amvlabs.kotlinsamples.menus.PopMenuActivity
+import com.amvlabs.kotlinsamples.pickets.ExamplePickerActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 
@@ -46,6 +48,9 @@ class LifeCycleActivity : AppCompatActivity() {
         }
         binding.popMenu.setOnClickListener {
             startActivity(Intent(it.context, PopMenuActivity::class.java))
+        }
+        binding.pickers.setOnClickListener {
+            startActivity(Intent(it.context, ExamplePickerActivity::class.java))
         }
         binding.alertDialogbt.setOnClickListener { v ->
             var slert = MaterialAlertDialogBuilder(v.context)
