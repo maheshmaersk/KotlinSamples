@@ -18,6 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KotlinSamples">
         <activity
+            android:name=".pickets.DobCalculatorActivity"
+            android:exported="false" />
+        <activity
             android:name=".pickets.ExamplePickerActivity"
             android:exported="false" />
         <activity

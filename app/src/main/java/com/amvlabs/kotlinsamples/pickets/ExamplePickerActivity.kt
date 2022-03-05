@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
 import android.app.TimePickerDialog
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TimePicker
@@ -63,9 +64,13 @@ class ExamplePickerActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     )
                         .show()
-                }, calendarDate.get(Calendar.HOUR), calendarDate.get(Calendar.MINUTE), true).show()
+                }, calendarDate.get(Calendar.HOUR), calendarDate.get(Calendar.MINUTE), true)
+            timePickerDialog.show()
 
+        }
 
+        binding.btDateOfBirth.setOnClickListener {
+            startActivity(Intent(mContext, DobCalculatorActivity::class.java))
         }
     }
 }
