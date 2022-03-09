@@ -37,7 +37,8 @@
         app:layout_constraintStart_toEndOf="@+id/dobTv"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <CheckBox
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/selectCurrentDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -58,4 +59,20 @@
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/dobCalculated"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:gravity="center"
+        android:padding="15dp"
+        tools:text="Dob Calculated"
+        android:textColor="@color/green"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calculateDob" />
 </androidx.constraintlayout.widget.ConstraintLayout>
