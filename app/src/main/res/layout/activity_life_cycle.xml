@@ -124,6 +124,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/popMenu" />
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/imageExample"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/purple_700"
+            android:text="Image Examples"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pickers" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

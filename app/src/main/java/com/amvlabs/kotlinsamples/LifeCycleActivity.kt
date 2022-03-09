@@ -19,6 +19,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.amvlabs.kotlinsamples.databinding.ActivityExamplePickerBinding
 import com.amvlabs.kotlinsamples.databinding.ActivityLifeCycleBinding
+import com.amvlabs.kotlinsamples.imageexam.ImageExamActivity
 import com.amvlabs.kotlinsamples.menus.PopMenuActivity
 import com.amvlabs.kotlinsamples.pickets.ExamplePickerActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -51,6 +52,9 @@ class LifeCycleActivity : AppCompatActivity() {
         }
         binding.pickers.setOnClickListener {
             startActivity(Intent(it.context, ExamplePickerActivity::class.java))
+        }
+        binding.imageExample.setOnClickListener {
+            startActivity(Intent(it.context, ImageExamActivity::class.java))
         }
         binding.alertDialogbt.setOnClickListener { v ->
             var slert = MaterialAlertDialogBuilder(v.context)
