@@ -56,10 +56,16 @@ class DobCalculatorActivity : AppCompatActivity() {
 
 
         binding.calculateDob.setOnClickListener {
-            if (!binding.selectCurrentDate.isChecked) {
+            if (binding.presentDateTv.text.toString()
+                    .equals("Dob Calculated",false) && !binding.selectCurrentDate.isChecked
+            ) {
+                binding.dobCalculated.text = "Please Select the Date or Select the Checkbox"
+            } else if (!binding.selectCurrentDate.isChecked) {
                 mPresentDate = binding.presentDateTv.text.toString()
+                calculateDob(mContext, binding.dobTv.text.toString(), mPresentDate)
+            } else if (binding.selectCurrentDate.isChecked) {
+                calculateDob(mContext, binding.dobTv.text.toString(), mPresentDate)
             }
-            calculateDob(mContext, binding.dobTv.text.toString(), mPresentDate)
         }
 
     }
