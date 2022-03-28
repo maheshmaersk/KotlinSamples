@@ -29,9 +29,9 @@ import com.google.android.material.snackbar.Snackbar
 class LifeCycleActivity : AppCompatActivity() {
     val TAG = LifeCycleActivity::class.java.simpleName
     private lateinit var binding: ActivityLifeCycleBinding
+    lateinit var mContext: Context
     private var seekProgress: Int = 0
     var mAudio: AudioManager? = null
-    lateinit var mContext: Context
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
