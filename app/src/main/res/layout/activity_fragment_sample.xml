@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragmentsample.FragmentSampleActivity">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/addA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add A"
+        app:layout_constraintEnd_toStartOf="@+id/addB"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/addB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add B"
+        app:layout_constraintEnd_toStartOf="@+id/remA"
+        app:layout_constraintStart_toEndOf="@+id/addA"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/remA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remove A"
+        app:layout_constraintEnd_toStartOf="@+id/remB"
+        app:layout_constraintStart_toEndOf="@+id/addB"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/remB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remove B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/remA"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/repA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Replace A"
+        app:layout_constraintEnd_toStartOf="@+id/repB"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addA" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/repB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Replace B"
+        app:layout_constraintBottom_toBottomOf="@+id/repA"
+        app:layout_constraintEnd_toStartOf="@+id/showA"
+        app:layout_constraintStart_toEndOf="@+id/repA"
+        app:layout_constraintTop_toTopOf="@+id/repA" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/showA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show A"
+        app:layout_constraintBottom_toBottomOf="@+id/repA"
+        app:layout_constraintEnd_toStartOf="@+id/hideA"
+        app:layout_constraintStart_toEndOf="@+id/repB"
+        app:layout_constraintTop_toTopOf="@+id/repA" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/hideA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hide A"
+        app:layout_constraintBottom_toBottomOf="@+id/repA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/showA"
+        app:layout_constraintTop_toTopOf="@+id/repA" />
+
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/repA" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

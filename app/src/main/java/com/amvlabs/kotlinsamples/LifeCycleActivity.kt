@@ -19,9 +19,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.amvlabs.kotlinsamples.databinding.ActivityExamplePickerBinding
 import com.amvlabs.kotlinsamples.databinding.ActivityLifeCycleBinding
+import com.amvlabs.kotlinsamples.fragmentsample.FragmentSampleActivity
 import com.amvlabs.kotlinsamples.imageexam.ImageExamActivity
 import com.amvlabs.kotlinsamples.menus.PopMenuActivity
 import com.amvlabs.kotlinsamples.pickets.ExamplePickerActivity
+import com.amvlabs.kotlinsamples.viewpagersample.WalkThroughActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 
@@ -55,6 +57,12 @@ class LifeCycleActivity : AppCompatActivity() {
         }
         binding.imageExample.setOnClickListener {
             startActivity(Intent(it.context, ImageExamActivity::class.java))
+        }
+        binding.fragments.setOnClickListener {
+            startActivity(Intent(it.context, FragmentSampleActivity::class.java))
+        }
+        binding.pagerExample.setOnClickListener {
+            startActivity(Intent(it.context, WalkThroughActivity::class.java))
         }
         binding.alertDialogbt.setOnClickListener { v ->
             var slert = MaterialAlertDialogBuilder(v.context)

@@ -18,11 +18,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KotlinSamples">
         <activity
+            android:name=".viewpagersample.WalkThroughActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".fragmentsample.FragmentSampleActivity"
+            android:exported="false" />
+        <activity
             android:name=".LauncherActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -47,9 +55,7 @@
             android:exported="false" />
         <activity
             android:name=".LifeCycleActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".SampleActivity"
             android:exported="false" />
