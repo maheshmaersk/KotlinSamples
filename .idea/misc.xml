@@ -8,14 +8,19 @@
         <entry key="app/src/main/res/drawable/sqareshape.xml" value="0.33177083333333335" />
         <entry key="app/src/main/res/layout/activity_dob_calculator.xml" value="0.3015625" />
         <entry key="app/src/main/res/layout/activity_example_picker.xml" value="0.315625" />
+        <entry key="app/src/main/res/layout/activity_fragment_sample.xml" value="0.315625" />
+        <entry key="app/src/main/res/layout/activity_launcher.xml" value="0.328125" />
         <entry key="app/src/main/res/layout/activity_life.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/layout/activity_life_cycle.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.17239583333333333" />
         <entry key="app/src/main/res/layout/activity_pop_menu.xml" value="0.1859375" />
         <entry key="app/src/main/res/layout/activity_sample.xml" value="0.45" />
+        <entry key="app/src/main/res/layout/activity_walk_thorugh.xml" value="0.315625" />
         <entry key="app/src/main/res/layout/content_on_boarding.xml" value="0.3171875" />
         <entry key="app/src/main/res/layout/custom_spinner.xml" value="0.3171875" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.3171875" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.315625" />
+        <entry key="app/src/main/res/layout/fragment_s.xml" value="0.315625" />
         <entry key="app/src/main/res/layout/list_item_product.xml" value="0.33" />
         <entry key="app/src/main/res/menu/menu_home.xml" value="0.33645833333333336" />
         <entry key="app/src/main/res/menu/menu_life.xml" value="0.33645833333333336" />

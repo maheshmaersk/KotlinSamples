@@ -22,11 +22,15 @@ class FragmentSampleActivity : AppCompatActivity() {
 
         binding.addA.setOnClickListener {
             val fTransaction = fManager.beginTransaction()
+            fTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left,
+                R.anim.slide_in_left, R.anim.slide_out_right)
             fTransaction.add(R.id.fragmentView,SFragment.newInstance(), SFragment::class.java.simpleName)
             fTransaction.commit()
         }
         binding.addB.setOnClickListener {
             val fTransaction = fManager.beginTransaction()
+            fTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left,
+                R.anim.slide_in_left, R.anim.slide_out_right)
             fTransaction.add(R.id.fragmentView, LoginFragment.newInstance(), LoginFragment::class.java.simpleName)
             fTransaction.commit()
         }
@@ -59,11 +63,15 @@ class FragmentSampleActivity : AppCompatActivity() {
 
         binding.repA.setOnClickListener {
             val fTransaction = fManager.beginTransaction()
+            fTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left,
+                R.anim.slide_in_left, R.anim.slide_out_right)
             fTransaction.replace(R.id.fragmentView,SFragment.newInstance(), SFragment::class.java.simpleName)
             fTransaction.commit()
         }
         binding.repB.setOnClickListener {
             val fTransaction = fManager.beginTransaction()
+            fTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left,
+                R.anim.slide_in_left, R.anim.slide_out_right)
             fTransaction.replace(R.id.fragmentView, LoginFragment.newInstance(), LoginFragment::class.java.simpleName)
             fTransaction.commit()
         }
