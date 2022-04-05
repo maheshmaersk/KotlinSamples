@@ -1,46 +1,48 @@
-package com.amvlabs.kotlinsamples.fragmentsample
+package com.amvlabs.kotlinsamples.viewpagersample
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.amvlabs.kotlinsamples.R
+import com.amvlabs.kotlinsamples.databinding.FragmentCallsBinding
+import com.amvlabs.kotlinsamples.databinding.FragmentChatBinding
 import com.amvlabs.kotlinsamples.databinding.FragmentLoginBinding
 
+private const val ARG_PARAM1 = "param1"
+private const val ARG_PARAM2 = "param2"
 
-class LoginFragment : Fragment() {
+class ChatFragment : Fragment() {
+    private var param1: String? = null
+    private var param2: String? = null
+    private var _binding: FragmentChatBinding? = null
 
-    private var _binding: FragmentLoginBinding? = null
     // This property is only valid between onCreateView and onDestroyView
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        arguments?.let {
+            param1 = it.getString(ARG_PARAM1)
+            param2 = it.getString(ARG_PARAM2)
+        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentLoginBinding.inflate(inflater, container, false)
+        _binding = FragmentChatBinding.inflate(inflater, container, false)
         val view = binding.root
-        binding.fBtLogin.setOnClickListener {
-            Toast.makeText(view.context,"UserName is ${binding.fLoginUName.text.toString()}\nPassword is ${binding.fLoginUPass.text.toString()}",Toast.LENGTH_SHORT).show()
-        }
         return view
     }
 
     companion object {
         @JvmStatic
         fun newInstance() =
-            LoginFragment().apply {
-            }
-    }
+            ChatFragment().apply {
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+            }
     }
 }

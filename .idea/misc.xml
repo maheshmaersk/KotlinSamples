@@ -18,9 +18,12 @@
         <entry key="app/src/main/res/layout/activity_walk_thorugh.xml" value="0.315625" />
         <entry key="app/src/main/res/layout/content_on_boarding.xml" value="0.3171875" />
         <entry key="app/src/main/res/layout/custom_spinner.xml" value="0.3171875" />
+        <entry key="app/src/main/res/layout/fragment_calls.xml" value="0.328125" />
+        <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.328125" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.3171875" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.315625" />
         <entry key="app/src/main/res/layout/fragment_s.xml" value="0.315625" />
+        <entry key="app/src/main/res/layout/fragment_status.xml" value="0.328125" />
         <entry key="app/src/main/res/layout/list_item_product.xml" value="0.33" />
         <entry key="app/src/main/res/menu/menu_home.xml" value="0.33645833333333336" />
         <entry key="app/src/main/res/menu/menu_life.xml" value="0.33645833333333336" />

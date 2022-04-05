@@ -3,7 +3,9 @@ package com.amvlabs.kotlinsamples.viewpagersample
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TableLayout
 import com.amvlabs.kotlinsamples.databinding.ActivityWalkThorughBinding
+import com.google.android.material.tabs.TabLayout
 
 class WalkThroughActivity : AppCompatActivity() {
 
@@ -19,5 +21,12 @@ class WalkThroughActivity : AppCompatActivity() {
         mContext = binding.root.context
 
 
+//        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("CHATS"))
+//        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("STATUS"))
+//        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("CALLS"))
+        binding.tabLayout.tabGravity = TabLayout.GRAVITY_FILL
+
+        binding.contentPager.adapter = TabPagerAdapter(supportFragmentManager)
+        binding.tabLayout.setupWithViewPager(binding.contentPager)
     }
 }
