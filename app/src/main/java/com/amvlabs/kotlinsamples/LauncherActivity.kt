@@ -2,6 +2,7 @@ package com.amvlabs.kotlinsamples
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import android.view.Window
@@ -9,12 +10,14 @@ import android.view.WindowManager
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import com.amvlabs.kotlinsamples.databinding.ActivityLauncherBinding
+import com.amvlabs.kotlinsamples.onboarding.OnBoardingWalkActivity
 
 class LauncherActivity : AppCompatActivity() {
 
     val TAG = LauncherActivity::class.java.simpleName
     private lateinit var binding: ActivityLauncherBinding
     lateinit var mContext: Context
+    private val sharedPrefFile = "kotlinSamples"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +33,7 @@ class LauncherActivity : AppCompatActivity() {
         setContentView(binding.root)
         mContext = binding.root.context
 
-
+        val sharedPreferences: SharedPreferences = this.getSharedPreferences(sharedPrefFile,Context.MODE_PRIVATE)
 
         // HERE WE ARE TAKING THE REFERENCE OF OUR IMAGE
         // SO THAT WE CAN PERFORM ANIMATION USING THAT IMAGE
@@ -40,9 +43,21 @@ class LauncherActivity : AppCompatActivity() {
         // we used the postDelayed(Runnable, time) method
         // to send a message with a delayed time.
         Handler().postDelayed({
-            val intent = Intent(this, LifeCycleActivity::class.java)
-            startActivity(intent)
-            finish()
+
+            val sharedIdValue = sharedPreferences.getBoolean("firstTime",false)
+            if(!sharedIdValue){
+                val editor:SharedPreferences.Editor =  sharedPreferences.edit()
+                editor.putBoolean("firstTime",true)
+                editor.apply()
+                editor.commit()
+                val intent = Intent(this, OnBoardingWalkActivity::class.java)
+                startActivity(intent)
+                finish()
+            }else{
+                val intent = Intent(this, LifeCycleActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
         }, 3000)
 
     }

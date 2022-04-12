@@ -18,9 +18,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KotlinSamples">
         <activity
+            android:name=".onboarding.OnBoardingWalkActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.OnBoarding"/>
+        <activity
             android:name=".viewpagersample.WalkThroughActivity"
             android:exported="false" />
-
         <activity
             android:name=".fragmentsample.FragmentSampleActivity"
             android:exported="false" />
