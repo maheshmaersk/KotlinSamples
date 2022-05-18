@@ -17,10 +17,10 @@
         android:roundIcon="@mipmap/ic_logo_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.KotlinSamples">
+
         <activity
             android:name=".onboarding.OnBoardingWalkActivity"
-            android:exported="false"
-            android:theme="@style/AppTheme.OnBoarding"/>
+            android:exported="false" />
         <activity
             android:name=".viewpagersample.WalkThroughActivity"
             android:exported="false" />
@@ -30,7 +30,7 @@
         <activity
             android:name=".LauncherActivity"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
+            android:theme="@style/Theme.KotlinSamples">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -64,8 +64,7 @@
             android:exported="false" />
         <activity
             android:name=".OnBoardingActivity"
-            android:exported="true"
-            android:theme="@style/Theme.KotlinSamples.NoActionBar" />
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true" />

@@ -18,6 +18,8 @@
     <color name="orange">#FF9800</color>
     <color name="light_orange">#FFC107</color>
     <color name="grey">#D6D6D6</color>
+    <color name="transparent_grey">#EDEDED</color>
+    <color name="transparent">#00000000</color>
 
     <color name="colorPrimary">#FFFFFF</color>
     <color name="colorPrimaryDark">#FFFFFF</color>

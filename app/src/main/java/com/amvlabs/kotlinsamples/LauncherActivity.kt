@@ -23,7 +23,7 @@ class LauncherActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLauncherBinding.inflate(layoutInflater)
 
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);
         // This is used to hide the status bar and make
         // the splash screen as a full screen activity.
         window.setFlags(
@@ -40,10 +40,12 @@ class LauncherActivity : AppCompatActivity() {
         val slideAnimation = AnimationUtils.loadAnimation(this, R.anim.side_slide)
         binding.logoApp.startAnimation(slideAnimation)
 
+//        val intent = Intent(this, OnBoardingWalkActivity::class.java)
+//        startActivity(intent)
+//        finish()
         // we used the postDelayed(Runnable, time) method
         // to send a message with a delayed time.
         Handler().postDelayed({
-
             val sharedIdValue = sharedPreferences.getBoolean("firstTime",false)
             if(!sharedIdValue){
                 val editor:SharedPreferences.Editor =  sharedPreferences.edit()
@@ -58,6 +60,9 @@ class LauncherActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             }
+//            val intent = Intent(this, OnBoardingWalkActivity::class.java)
+//            startActivity(intent)
+//            finish()
         }, 3000)
 
     }
