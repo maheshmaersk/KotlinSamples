@@ -22,6 +22,7 @@ import com.amvlabs.kotlinsamples.databinding.ActivityLifeCycleBinding
 import com.amvlabs.kotlinsamples.fragmentsample.FragmentSampleActivity
 import com.amvlabs.kotlinsamples.imageexam.ImageExamActivity
 import com.amvlabs.kotlinsamples.menus.PopMenuActivity
+import com.amvlabs.kotlinsamples.mvvmSample.MVVMSampleActivity
 import com.amvlabs.kotlinsamples.pickets.ExamplePickerActivity
 import com.amvlabs.kotlinsamples.viewpagersample.WalkThroughActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -63,6 +64,9 @@ class LifeCycleActivity : AppCompatActivity() {
         }
         binding.pagerExample.setOnClickListener {
             startActivity(Intent(it.context, WalkThroughActivity::class.java))
+        }
+        binding.mvvmSample.setOnClickListener {
+            startActivity(Intent(it.context, MVVMSampleActivity::class.java))
         }
         binding.alertDialogbt.setOnClickListener { v ->
             var slert = MaterialAlertDialogBuilder(v.context)

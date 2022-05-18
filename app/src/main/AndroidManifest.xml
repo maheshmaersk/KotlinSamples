@@ -18,9 +18,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KotlinSamples">
         <activity
+            android:name=".mvvmSample.MVVMSampleActivity"
+            android:exported="false"
+            />
+        <activity
             android:name=".onboarding.OnBoardingWalkActivity"
             android:exported="false"
-            android:theme="@style/AppTheme.OnBoarding"/>
+            android:theme="@style/AppTheme.OnBoarding" />
         <activity
             android:name=".viewpagersample.WalkThroughActivity"
             android:exported="false" />
