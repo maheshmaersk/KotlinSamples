@@ -18,9 +18,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KotlinSamples">
         <activity
+            android:name=".retrofitsample.ApiResponseActivity"
+            android:exported="false" />
+        <activity
             android:name=".mvvmSample.MVVMSampleActivity"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".onboarding.OnBoardingWalkActivity"
             android:exported="false"

@@ -24,6 +24,7 @@ import com.amvlabs.kotlinsamples.imageexam.ImageExamActivity
 import com.amvlabs.kotlinsamples.menus.PopMenuActivity
 import com.amvlabs.kotlinsamples.mvvmSample.MVVMSampleActivity
 import com.amvlabs.kotlinsamples.pickets.ExamplePickerActivity
+import com.amvlabs.kotlinsamples.retrofitsample.ApiResponseActivity
 import com.amvlabs.kotlinsamples.viewpagersample.WalkThroughActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
@@ -43,7 +44,7 @@ class LifeCycleActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        mContext= binding.root.context
+        mContext = binding.root.context
 
         mAudio = getSystemService(Context.AUDIO_SERVICE) as AudioManager?
         initControls(binding.musicVolume, AudioManager.STREAM_MUSIC);
@@ -68,6 +69,11 @@ class LifeCycleActivity : AppCompatActivity() {
         binding.mvvmSample.setOnClickListener {
             startActivity(Intent(it.context, MVVMSampleActivity::class.java))
         }
+
+        binding.retrofitSample.setOnClickListener {
+            startActivity(Intent(it.context, ApiResponseActivity::class.java))
+        }
+
         binding.alertDialogbt.setOnClickListener { v ->
             var slert = MaterialAlertDialogBuilder(v.context)
             slert.setTitle("Exit Message")
@@ -175,22 +181,22 @@ class LifeCycleActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_home,menu)
+        menuInflater.inflate(R.menu.menu_home, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        var intent:Intent = Intent(mContext,LifeActivity::class.java)
+        var intent: Intent = Intent(mContext, LifeActivity::class.java)
         when (item.itemId) {
             R.id.menuProfile -> {
-                intent = Intent(mContext,LifeActivity::class.java)
+                intent = Intent(mContext, LifeActivity::class.java)
             }
             R.id.menuTheme -> {
-                intent = Intent(mContext,MainActivity::class.java)
+                intent = Intent(mContext, MainActivity::class.java)
             }
             R.id.menuSettings -> {
-                intent = Intent(mContext,SampleActivity::class.java)
+                intent = Intent(mContext, SampleActivity::class.java)
             }
         }
         startActivity(intent)
