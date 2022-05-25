@@ -18,6 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KotlinSamples">
         <activity
+            android:name=".camera.CameraSampleActivity"
+            android:exported="false" />
+        <activity
             android:name=".retrofitsample.ApiResponseActivity"
             android:exported="false" />
         <activity

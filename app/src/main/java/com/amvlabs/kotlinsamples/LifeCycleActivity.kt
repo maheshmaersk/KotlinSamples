@@ -17,6 +17,7 @@ import android.widget.SeekBar
 import android.widget.SeekBar.OnSeekBarChangeListener
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.amvlabs.kotlinsamples.camera.CameraSampleActivity
 import com.amvlabs.kotlinsamples.databinding.ActivityExamplePickerBinding
 import com.amvlabs.kotlinsamples.databinding.ActivityLifeCycleBinding
 import com.amvlabs.kotlinsamples.fragmentsample.FragmentSampleActivity
@@ -72,6 +73,9 @@ class LifeCycleActivity : AppCompatActivity() {
 
         binding.retrofitSample.setOnClickListener {
             startActivity(Intent(it.context, ApiResponseActivity::class.java))
+        }
+        binding.cameraSample.setOnClickListener {
+            startActivity(Intent(it.context, CameraSampleActivity::class.java))
         }
 
         binding.alertDialogbt.setOnClickListener { v ->
