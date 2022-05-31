@@ -23,6 +23,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cameraPreview" />
 
     <LinearLayout
+        android:id="@+id/ttsLll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -65,5 +66,50 @@
 
 
     </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bOn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="B On"
+        android:onClick="on"
+        app:layout_constraintEnd_toStartOf="@+id/bOff"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ttsLll" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bOff"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="B Off"
+        android:onClick="off"
+        app:layout_constraintEnd_toStartOf="@+id/bVisible"
+        app:layout_constraintStart_toEndOf="@+id/bOn"
+        app:layout_constraintTop_toBottomOf="@+id/ttsLll" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bVisible"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="B Visible"
+        app:layout_constraintEnd_toStartOf="@+id/bDevices"
+        app:layout_constraintStart_toEndOf="@+id/bOff"
+        app:layout_constraintTop_toBottomOf="@+id/ttsLll" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bDevices"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="B List Devices"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bVisible"
+        app:layout_constraintTop_toBottomOf="@+id/ttsLll" />
+
+    <ListView
+        android:id="@+id/pairedDevices"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bOn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

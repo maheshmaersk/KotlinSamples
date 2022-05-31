@@ -1,9 +1,12 @@
 package com.amvlabs.kotlinsamples
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.media.AudioManager
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -27,8 +30,10 @@ import com.amvlabs.kotlinsamples.mvvmSample.MVVMSampleActivity
 import com.amvlabs.kotlinsamples.pickets.ExamplePickerActivity
 import com.amvlabs.kotlinsamples.retrofitsample.ApiResponseActivity
 import com.amvlabs.kotlinsamples.viewpagersample.WalkThroughActivity
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.messaging.FirebaseMessaging
 
 
 class LifeCycleActivity : AppCompatActivity() {
@@ -46,6 +51,28 @@ class LifeCycleActivity : AppCompatActivity() {
 
 
         mContext = binding.root.context
+
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // Create channel to show notifications.
+            val channelId = getString(R.string.default_notification_channel_id)
+            val channelName = getString(R.string.default_notification_channel_name)
+            val notificationManager = getSystemService(NotificationManager::class.java)
+            notificationManager?.createNotificationChannel(
+                NotificationChannel(
+                    channelId,
+                    channelName, NotificationManager.IMPORTANCE_LOW
+                )
+            )
+        }
+
+        intent.extras?.let {
+            for (key in it.keySet()) {
+                val value = intent.extras?.get(key)
+                Log.d(TAG, "Key: $key Value: $value")
+            }
+        }
 
         mAudio = getSystemService(Context.AUDIO_SERVICE) as AudioManager?
         initControls(binding.musicVolume, AudioManager.STREAM_MUSIC);
@@ -76,6 +103,23 @@ class LifeCycleActivity : AppCompatActivity() {
         }
         binding.cameraSample.setOnClickListener {
             startActivity(Intent(it.context, CameraSampleActivity::class.java))
+        }
+
+        binding.FCMMessaging.setOnClickListener {
+            FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+                if (!task.isSuccessful) {
+                    Log.w(TAG, "Fetching FCM registration token failed", task.exception)
+                    return@OnCompleteListener
+                }
+
+                // Get new FCM registration token
+                val token = task.result
+
+                // Log and toast
+                val msg = getString(R.string.msg_token_fmt, token)
+                Log.d(TAG, msg)
+                Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+            })
         }
 
         binding.alertDialogbt.setOnClickListener { v ->

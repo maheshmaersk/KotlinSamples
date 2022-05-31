@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "856359220471",
+    "project_id": "kotlinsampl",
+    "storage_bucket": "kotlinsampl.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:856359220471:android:567f92c595bca7a09b8ff2",
+        "android_client_info": {
+          "package_name": "com.amvlabs.kotlinsamples"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "856359220471-3doqkmm0i70ju0s8vc1fvpcjinql69gn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdMwn-oGFhSyAh25W99v1niCpro4_J0A4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "856359220471-3doqkmm0i70ju0s8vc1fvpcjinql69gn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,17 +1,22 @@
 package com.amvlabs.kotlinsamples.camera
 
 import android.Manifest
+import android.bluetooth.BluetoothAdapter
+import android.bluetooth.BluetoothDevice
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.speech.RecognizerIntent
 import android.speech.tts.TextToSpeech
 import android.util.Log
+import android.view.View
+import android.widget.ArrayAdapter
+import android.widget.ListView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.AppCompatImageView
@@ -20,6 +25,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.amvlabs.kotlinsamples.R
 import java.util.*
+
 
 class CameraSampleActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
@@ -31,6 +37,13 @@ class CameraSampleActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private var btnSpeak1: AppCompatImageView? = null
     private var txvResult: AppCompatTextView? = null
     private var etSpeak: AppCompatEditText? = null
+    private var BA: BluetoothAdapter? = null
+    private var pairedDevices: Set<BluetoothDevice>? = null
+    private var lv: ListView? = null
+    private var bleON: AppCompatButton? = null
+    private var bleOFF: AppCompatButton? = null
+    private var blePaired: AppCompatButton? = null
+    private var bleVisible: AppCompatButton? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,6 +71,11 @@ class CameraSampleActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         etSpeak = findViewById(R.id.et_input)
         btnSpeak1 = findViewById(R.id.btnSpeak1)
         txvResult = findViewById(R.id.txvResult)
+        bleON = findViewById(R.id.bOn)
+        bleOFF = findViewById(R.id.bOff)
+        blePaired = findViewById(R.id.bDevices)
+        bleVisible = findViewById(R.id.bVisible)
+        lv = findViewById(R.id.pairedDevices)
 
         btnSpeak!!.isEnabled = false
 
@@ -66,8 +84,69 @@ class CameraSampleActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         btnSpeak!!.setOnClickListener { speakOut() }
         btnSpeak1!!.setOnClickListener { getSpeechInput() }
+        BA = BluetoothAdapter.getDefaultAdapter();
 
 
+
+    }
+
+    fun on(v: View?) {
+        if (!BA!!.isEnabled) {
+            val turnOn = Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
+            if (ActivityCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.BLUETOOTH_CONNECT
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return
+            }
+            startActivityForResult(turnOn, 0)
+            Toast.makeText(applicationContext, "Turned on", Toast.LENGTH_LONG).show()
+        } else {
+            Toast.makeText(applicationContext, "Already on", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    fun off(v: View?) {
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.BLUETOOTH_CONNECT
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return
+        }
+        BA!!.disable()
+        Toast.makeText(applicationContext, "Turned off", Toast.LENGTH_LONG).show()
+    }
+
+
+    fun visible(v: View?) {
+        val getVisible = Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE)
+        startActivityForResult(getVisible, 0)
+    }
+
+
+    fun list(v: View?) {
+        pairedDevices = BA!!.bondedDevices
+        val list = ArrayList<Any>()
+//        for (bt in pairedDevices) list.add(bt.name)
+        Toast.makeText(applicationContext, "Showing Paired Devices", Toast.LENGTH_SHORT).show()
+        val adapter: ArrayAdapter<*> = ArrayAdapter(this, android.R.layout.simple_list_item_1, list)
+        lv!!.adapter = adapter
     }
 
 

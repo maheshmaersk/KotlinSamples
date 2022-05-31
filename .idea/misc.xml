@@ -10,7 +10,7 @@
         <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1165" />
         <entry key="app/src/main/res/drawable/sqareshape.xml" value="0.33177083333333335" />
         <entry key="app/src/main/res/layout/activity_api_response.xml" value="0.3296875" />
-        <entry key="app/src/main/res/layout/activity_camera_sample.xml" value="0.20462962962962963" />
+        <entry key="app/src/main/res/layout/activity_camera_sample.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_dob_calculator.xml" value="0.3015625" />
         <entry key="app/src/main/res/layout/activity_example_picker.xml" value="0.315625" />
         <entry key="app/src/main/res/layout/activity_fragment_sample.xml" value="0.315625" />

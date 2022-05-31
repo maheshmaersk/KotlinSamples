@@ -36,4 +36,12 @@ class UserAdapter(private val mList: List<Datum>) : RecyclerView.Adapter<UserAda
     override fun getItemCount(): Int {
         return mList.size
     }
+
+    override fun getItemViewType(position: Int): Int {
+        return super.getItemViewType(position)
+    }
+
+    override fun getItemId(position: Int): Long {
+        return super.getItemId(position)
+    }
 }
